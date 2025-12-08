@@ -1,4 +1,4 @@
-# Goo-Net Toyota 86 Catalog Scraper  
+# Goo-Net Catalog Scraper  
 A Python-based scraper that extracts all vehicle specifications from Goo-Net Exchange (Japan).  
 The scraper collects catalog entries, follows each model detail page, and extracts complete technical specifications including engine, drivetrain, suspension, dimensions, and pricing.
 
