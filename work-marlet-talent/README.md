@@ -1,44 +1,29 @@
-# WorkMarket Talent Scraper (Advanced Playwright Automation)
+# WorkMarket Talent Scraper (v1.1)
 
-A highly advanced Playwright-based automation tool that extracts **Talent profiles, vendor details, and contact information** from WorkMarket.  
-This scraper captures dashboard JSON payloads, profile-level API responses, vendor tabs, worker tabs, filter chips, and exports validated batches into Excel—handling thousands of results with stability and accuracy.
+# Install
+pip install -r requirements.txt
+python -m playwright install
 
----
+# Authenticate (only when cookies expire)
+python authentication.py
 
-## 📌 Key Features
-### 🔹 Full Dashboard API Extraction
-- Intercepts WorkMarket’s **dashboard API payloads** via Playwright network listeners  
-- Parses virtualized grid rows  
-- Extracts:
-  - First & Last Name  
-  - Email (multiple sources)  
-  - Work Phone + Mobile  
-  - Location + ZIP  
-  - Industry  
-  - Certifications, Licenses, Insurance  
-  - Account Type  
-  - Satisfaction Score  
-  - Paid assignments  
-  - Drug Test & Background Check  
-  - Profile URL  
+Visible login + 2FA (headless=False by default). Saves cookies to `data/storage_state.json`.
 
-### 🔹 Vendor Profile Extraction
-- For vendor accounts, the scraper:
-  - Calls internal Profile JSON endpoint  
-  - Extracts deeper fields not shown in the dashboard  
+# Run the scraper
+python workmarket_talent_scraper.py
 
-### 🔹 Worker Profile Extraction
-- Opens profile popups dynamically  
-- Captures **userAtCompanyDetails** API JSON  
-- Performs duplicate-suppression  
-- Extracts fallback phone/email/address from nested fields  
+If not logged in, the scraper runs `authentication.py` first.
+Press **1** to open a visible Talent page and apply filters, then press **Enter**.
+Or press **0** to scrape unfiltered headlessly.
 
-### 🔹 Batch Export System
-- Saves records in **batches** (user chooses batch size)  
-- Excel output includes:
-  - Filters applied (Row 1)
-  - Headers (Row 2)
-  - Records (Row 3+)
+# Output
+`Talent Output/YYYY-MM-DD_TOTAL.xlsx` (auto (1), (2) if same name exists)
+Row 1: filters text
+Row 2: headers
+Row 3+: data
 
-### 🔹 Intelligent Naming
-- Output is saved as:  
+# Columns
+id, name, email, work_phone, location, zip, industry, certifications, licenses, insurance, account_type, satisfaction_score, paid_assignments, drug_test, background_check, profile_url
+
+# Notes
+The grid is virtualized and horizontally scrollable; the scraper sweeps `scrollLeft` to reveal off-screen columns.
