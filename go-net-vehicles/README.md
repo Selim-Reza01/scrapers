@@ -5,7 +5,7 @@ The scraper collects catalog entries, follows each model detail page, and extrac
 ---
 
 ## 📌 Features
-- Scrapes all Toyota 86 catalog entries from Goo-Net Exchange  
+- Scrapes all entries from Goo-Net Exchange  
 - Extracts:
   - Sale year
   - Model type
@@ -32,7 +32,7 @@ The scraper collects catalog entries, follows each model detail page, and extrac
 ---
 
 ## 📂 How It Works
-1. Loads Toyota 86 catalog page  
+1. Loads catalog page  
 2. Extracts all listed models with:
    - model type  
    - detail page URL  
