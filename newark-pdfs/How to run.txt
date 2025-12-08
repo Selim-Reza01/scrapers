@@ -1,0 +1,12 @@
+Requirements:
+	Install Python 3.11+
+
+Then install required libraries:
+	pip install playwright pandas openpyxl
+	playwright install
+
+
+Input part number at: input_parts.xlsx
+
+Open CMD from the address bar and run: 
+	python newark_scraper_v1.py
